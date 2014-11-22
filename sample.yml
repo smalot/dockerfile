@@ -1,0 +1,40 @@
+language: php
+
+env:
+    - EDITOR='vim'
+
+services:
+    - apache2
+    - mysql
+    - memcache
+    - redis
+
+mysql:
+    database: drupal
+    username: root
+    encoding: utf8
+
+php:
+    - 5.3
+
+install:
+    # Install PHP and MySQL.
+    - apt-get update -yqq
+    - apt-get upgrade -yqq
+    - apt-get install -yqq mysql-server mysql-client php5-cli php5-mysql php-apc php5-curl php5-gd curl php5-intl
+
+    # Install latest Drush 6.
+    - export PATH="$HOME/.composer/vendor/bin:$PATH"
+    - composer global require --no-interaction --prefer-source drush/drush:6.*
+    - drush dl -y drupalorg_drush-7.x-1.x-dev --destination=$HOME/.drush
+    - drush cc drush
+
+before_script:
+    - touch /tmp/test
+
+script: /usr/bin/php test.php
+
+notification:
+    mail:
+      to: smalot@actualys.com
+      only_broken: true

@@ -1,0 +1,11 @@
+{
+    "name": "smalot/dockerfile",
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Sebastien MALOT",
+            "email": "sebastien@malot.fr"
+        }
+    ],
+    "require": {}
+}
