@@ -39,18 +39,4 @@ abstract class AbstractLayer
 
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        $content = '';
-
-        foreach ($this->comments as $comment) {
-            $content .= '# ' . preg_replace("[\n\r]", ' ', $comment) . "\n";
-        }
-
-        return $content;
-    }
 }

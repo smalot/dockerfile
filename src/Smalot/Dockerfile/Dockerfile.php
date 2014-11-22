@@ -13,7 +13,12 @@ class Dockerfile
     /**
      * @var string
      */
-    protected $name;
+    protected $from;
+
+    /**
+     * @var string
+     */
+    protected $maintainer;
 
     /**
      * @var AbstractLayer[]
@@ -21,12 +26,47 @@ class Dockerfile
     protected $layers;
 
     /**
-     * @param string $name
+     * @param string $from
+     * @param string $maintainer
      */
-    public function __construct($name = '')
+    public function __construct($from = '', $maintainer = '')
     {
-        $this->name = '';
+        $this->from = $from;
+        $this->maintainer = $maintainer;
+
         $this->layers = array();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * @param string $from
+     */
+    public function setFrom($from)
+    {
+        $this->from = $from;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMaintainer()
+    {
+        return $this->maintainer;
+    }
+
+    /**
+     * @param string $maintainer
+     */
+    public function setMaintainer($maintainer)
+    {
+        $this->maintainer = $maintainer;
     }
 
     /**
@@ -53,7 +93,22 @@ class Dockerfile
      */
     public function __toString()
     {
-        $content = implode("\n\n", (string) $this->getLayers());
+        if (!$this->from) {
+            throw new \InvalidArgumentException('Missing "FROM" instruction.');
+        }
+
+        $content = 'FROM ' . $this->from . "\n";
+
+        if ($this->maintainer) {
+            $content .= 'MAINTAINER ' . $this->maintainer . "\n";
+        }
+
+        foreach ($this->layers as $layer) {
+            $content .= "\n# " . implode("\n# ", $layer->getComments()) . "\n";
+            $content .= (string) $layer . "\n";
+        }
+
+        $content .= "\n" . implode("\n\n", $this->getLayers());
 
         return $content;
     }

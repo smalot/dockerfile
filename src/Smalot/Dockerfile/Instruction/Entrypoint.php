@@ -3,10 +3,10 @@
 namespace Smalot\Dockerfile\Instruction;
 
 /**
- * Class Run
+ * Class Entrypoint
  * @package Smalot\Dockerfile\Instruction
  */
-class Run extends AbstractLayer
+class Entrypoint extends AbstractLayer
 {
     /**
      * @var string
@@ -55,6 +55,6 @@ class Run extends AbstractLayer
         $command = escapeshellcmd($this->command);
         $args = array_map('escapeshellarg', $this->args);
 
-        return 'RUN ' . $command . ' ' . implode(' ', $args);
+        return 'ENTRYPOINT ' . $command . ' ' . implode(' ', $args);
     }
 }
