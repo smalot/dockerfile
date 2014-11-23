@@ -1,8 +1,8 @@
 {
     "name": "smalot/dockerfile",
     "type": "library",
-    "description": "Dockerfile builder",
-    "keywords": ["docker", "dockerfile", "generator", "builder"],
+    "description": "Dockerfile generator",
+    "keywords": ["docker", "dockerfile", "generator"],
     "license": "MIT",
     "authors": [
         {
