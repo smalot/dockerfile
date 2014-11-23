@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @file    This file is part of Dockerfile generator.
+ * @author  Sebastien MALOT <sebastien@malot.fr>
+ * @license MIT
+ * @url     <https://github.com/smalot/dockerfile>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Smalot\Docker\Dockerfile\Instruction;
 
 /**
@@ -21,7 +31,7 @@ class Expose extends AbstractLayer
     {
         parent::__construct($comments);
 
-        $this->ports = (array) $ports;
+        $this->ports = (array)$ports;
     }
 
     /**
@@ -39,6 +49,6 @@ class Expose extends AbstractLayer
     {
         $ports = array_map('intval', $this->ports);
 
-        return 'EXPOSE ' . implode(' ' , $ports);
+        return 'EXPOSE ' . implode(' ', $ports);
     }
 }
