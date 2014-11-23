@@ -37,8 +37,9 @@ class Package extends AbstractLayer
      */
     public function __toString()
     {
-        $packages = array_map('escapeshellarg', $this->packages);
-
-        return 'RUN apt-get update && apt-get install -y ' . implode(' ', $packages);
+        return 'RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y ' . implode(
+            ' ',
+            $this->packages
+        );
     }
 }

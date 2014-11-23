@@ -18,7 +18,7 @@ abstract class AbstractLayer
      */
     public function __construct($comments = array())
     {
-        $this->comments = $comments;
+        $this->comments = (array) $comments;
     }
 
     /**

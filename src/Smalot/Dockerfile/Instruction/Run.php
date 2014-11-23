@@ -9,9 +9,9 @@ namespace Smalot\Dockerfile\Instruction;
 class Run extends AbstractLayer
 {
     /**
-     * @var string
+     * @var array
      */
-    protected $command;
+    protected $commands;
 
     /**
      * @var array
@@ -19,32 +19,22 @@ class Run extends AbstractLayer
     protected $args;
 
     /**
-     * @param string $command
-     * @param array $args
+     * @param string|array $commands
      * @param array $comments
      */
-    public function __construct($command, $args = array(), $comments = array())
+    public function __construct($commands, $comments = array())
     {
         parent::__construct($comments);
 
-        $this->command = $command;
-        $this->args = $args;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCommand()
-    {
-        return $this->command;
+        $this->commands = (array) $commands;
     }
 
     /**
      * @return array
      */
-    public function getArgs()
+    public function getCommands()
     {
-        return $this->args;
+        return $this->commands;
     }
 
     /**
@@ -52,9 +42,6 @@ class Run extends AbstractLayer
      */
     public function __toString()
     {
-        $command = escapeshellcmd($this->command);
-        $args = array_map('escapeshellarg', $this->args);
-
-        return 'RUN ' . $command . ' ' . implode(' ', $args);
+        return 'RUN ' . implode(" && \\\n    ", $this->commands);
     }
 }
