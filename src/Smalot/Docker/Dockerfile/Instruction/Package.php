@@ -1,10 +1,10 @@
 <?php
 
-namespace Smalot\Dockerfile\Instruction;
+namespace Smalot\Docker\Dockerfile\Instruction;
 
 /**
  * Class Package
- * @package Smalot\Dockerfile\Instruction
+ * @package Smalot\Docker\Dockerfile\Instruction
  */
 class Package extends AbstractLayer
 {

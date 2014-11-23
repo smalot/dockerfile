@@ -1,14 +1,14 @@
 <?php
 
-namespace Smalot\Dockerfile;
+namespace Smalot\Docker\Dockerfile;
 
-use Smalot\Dockerfile\Instruction\AbstractLayer;
-use Smalot\Dockerfile\Source\ReaderInterface;
-use Smalot\Dockerfile\Source\WriterInterface;
+use Smalot\Docker\Dockerfile\Instruction\AbstractLayer;
+use Smalot\Docker\Dockerfile\Source\ReaderInterface;
+use Smalot\Docker\Dockerfile\Source\WriterInterface;
 
 /**
  * Class Dockerfile
- * @package Smalot\Dockerfile
+ * @package Smalot\Docker\Dockerfile
  */
 class Dockerfile
 {

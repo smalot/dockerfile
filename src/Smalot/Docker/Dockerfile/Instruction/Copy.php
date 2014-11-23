@@ -1,12 +1,12 @@
 <?php
 
-namespace Smalot\Dockerfile\Instruction;
+namespace Smalot\Docker\Dockerfile\Instruction;
 
 /**
- * Class Add
- * @package Smalot\Dockerfile\Instruction
+ * Class Copy
+ * @package Smalot\Docker\Dockerfile\Instruction
  */
-class Add extends AbstractLayer
+class Copy extends AbstractLayer
 {
     /**
      * @var array
@@ -54,6 +54,6 @@ class Add extends AbstractLayer
     {
         $sources = array_map('escapeshellarg', $this->sources);
 
-        return 'ADD ' . implode(' ', $sources) . ' ' . escapeshellarg($this->destination);
+        return 'COPY ' . implode(' ', $sources) . ' ' . escapeshellarg($this->destination);
     }
 }

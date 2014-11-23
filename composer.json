@@ -1,6 +1,8 @@
 {
     "name": "smalot/dockerfile",
-    "description": "Dockerfile generator",
+    "type": "library",
+    "description": "Dockerfile builder",
+    "keywords": ["docker", "dockerfile", "generator", "builder"],
     "license": "MIT",
     "authors": [
         {
@@ -13,12 +15,11 @@
         "issues": "https://github.com/smalot/dockerfile/issues"
     },
     "require": {
-        "php": ">=5.3.0",
-        "symfony/yaml": "*"
+        "php": ">=5.3.0"
     },
     "autoload": {
         "psr-0": {
-            "Smalot\\Dockerfile\\": "src/"
+            "Smalot\\Docker\\Dockerfile\\": "src/"
         }
     }
 }

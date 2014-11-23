@@ -1,10 +1,10 @@
 <?php
 
-namespace Smalot\Dockerfile\Source;
+namespace Smalot\Docker\Dockerfile\Source;
 
 /**
  * Interface ReaderInterface
- * @package Smalot\Dockerfile\Source
+ * @package Smalot\Docker\Dockerfile\Source
  */
 interface ReaderInterface {
     /**

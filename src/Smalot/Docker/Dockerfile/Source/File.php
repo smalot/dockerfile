@@ -1,10 +1,10 @@
 <?php
 
-namespace Smalot\Dockerfile\Source;
+namespace Smalot\Docker\Dockerfile\Source;
 
 /**
  * Class File
- * @package Smalot\Dockerfile\Source
+ * @package Smalot\Docker\Dockerfile\Source
  */
 class File implements ReaderInterface, WriterInterface
 {
