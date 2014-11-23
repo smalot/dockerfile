@@ -3,6 +3,8 @@
 namespace Smalot\Dockerfile;
 
 use Smalot\Dockerfile\Instruction\AbstractLayer;
+use Smalot\Dockerfile\Source\ReaderInterface;
+use Smalot\Dockerfile\Source\WriterInterface;
 
 /**
  * Class Dockerfile
@@ -104,21 +106,32 @@ class Dockerfile
         }
 
         foreach ($this->layers as $layer) {
-            $content .= "\n# " . implode("\n# ", $layer->getComments()) . "\n";
-            $content .= (string) $layer . "\n";
-        }
+            if ($comments = $layer->getComments()) {
+                $content .= "\n# " . implode("\n# ", $comments) . "\n";
+            }
 
-        $content .= "\n" . implode("\n\n", $this->getLayers());
+            $content .= (string)$layer . "\n";
+        }
 
         return $content;
     }
 
     /**
-     * @param $content
+     * @param WriterInterface $writer
+     * @return bool
+     */
+    public function write(WriterInterface $writer)
+    {
+        return $writer->write((string)$this);
+    }
+
+    /**
+     * @param ReaderInterface $reader
      * @return Dockerfile
      */
-    public static function parse($content)
+    public static function parse(ReaderInterface $reader)
     {
+        // TODO
         return new self();
     }
 }
