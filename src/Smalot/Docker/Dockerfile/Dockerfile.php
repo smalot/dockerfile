@@ -105,7 +105,7 @@ class Dockerfile
      */
     public function __toString()
     {
-        $content = 'FROM ' . $this->from ? $this->from : 'debian:latest' . "\n";
+        $content = 'FROM ' . ($this->from ? $this->from : 'debian:latest') . "\n";
 
         if ($this->maintainer) {
             $content .= 'MAINTAINER ' . $this->maintainer . "\n";
