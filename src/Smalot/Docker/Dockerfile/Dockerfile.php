@@ -105,11 +105,7 @@ class Dockerfile
      */
     public function __toString()
     {
-        if (!$this->from) {
-            throw new \InvalidArgumentException('Missing "FROM" instruction.');
-        }
-
-        $content = 'FROM ' . $this->from . "\n";
+        $content = 'FROM ' . $this->from ? $this->from : 'debian:latest' . "\n";
 
         if ($this->maintainer) {
             $content .= 'MAINTAINER ' . $this->maintainer . "\n";
